@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary-500: #8b5cf6; /* Violet 500 */
-  --color-primary-600: #7c3aed; /* Violet 600 */
+  --color-primary-400: #22d3ee; /* Cyan 400 for accent */
+  --color-primary-500: #06b6d4; /* Cyan 500 */
+  --color-primary-600: #0891b2; /* Cyan 600 */
+  --color-accent: #22c55e; /* Green for terminal text */
 }
 
 @custom-variant dark (&:is(.dark *));
@@ -11,11 +13,15 @@
   :root {
     --background: #f8fafc;
     --foreground: #0f172a;
+    --card-bg: #ffffff;
+    --card-border: #e2e8f0;
   }
 
   .dark {
-    --background: #0f172a;
-    --foreground: #f8fafc;
+    --background: #000000;
+    --foreground: #e2e8f0;
+    --card-bg: #0a0a0a;
+    --card-border: #1f2937;
   }
 }
 
@@ -24,8 +30,37 @@ body {
   color: var(--foreground);
   transition: background-color 0.3s ease, color 0.3s ease;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  letter-spacing: -0.03em;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Custom terminal font class for specific sections */
+.font-mono-terminal {
+  font-family: 'Fira Code', 'Courier New', Courier, monospace;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
 }
