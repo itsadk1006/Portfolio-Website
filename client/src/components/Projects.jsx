@@ -1,89 +1,93 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { projects } from '../data/portfolioData';
 import { ExternalLink, Code } from 'lucide-react';
 import { FaGithub as Github } from 'react-icons/fa';
 
 const Projects = () => {
-  const [filter, setFilter] = useState('All');
-
-  // Extract unique categories and add 'All'
-  const categories = ['All', ...new Set(projects.map(project => project.category))];
-
-  const filteredProjects = filter === 'All'
-    ? projects
-    : projects.filter(project => project.category === filter);
-
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <section id="projects" className="py-24 px-4 sm:px-6 lg:px-8 bg-card-bg border-t border-card-border">
+      <div className="max-w-5xl mx-auto">
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-          className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6"
+          viewport={{ once: true }}
+          className="mb-16 text-center"
         >
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured <span className="text-primary-500">Projects</span></h2>
-            <div className="w-20 h-1 bg-primary-500 rounded-full"></div>
-          </div>
-
-          {/* Filter Tabs */}
-          <div className="flex flex-wrap gap-2">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setFilter(cat)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                  filter === cat
-                    ? 'bg-primary-600 text-white shadow-md'
-                    : 'bg-foreground/5 text-foreground/70 hover:bg-foreground/10 hover:text-foreground'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+          <span className="text-accent font-mono-terminal text-sm mb-2 block">// case_studies.md</span>
+          <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tight">Projects, All <span className="text-primary-500">Shipped</span></h2>
         </motion.div>
 
-        {/* Projects Grid */}
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <AnimatePresence>
-            {filteredProjects.map((project) => (
-              <motion.div
-                key={project.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
-                className="group bg-background border border-foreground/10 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full"
-              >
-                {/* Project Image Placeholder / Container */}
-                <div className="relative h-48 w-full overflow-hidden bg-foreground/5">
-                  {project.featuredImage ? (
-                    <img
-                      src={project.featuredImage}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-foreground/20">
-                      <Code size={48} />
-                    </div>
-                  )}
-                  {/* Overlay on hover */}
-                  <div className="absolute inset-0 bg-background/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+        <div className="space-y-24">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="group"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+
+                {/* Project Image (Alternating sides) */}
+                <div className={`lg:col-span-7 relative ${index % 2 !== 0 ? 'lg:order-2' : ''}`}>
+                  <div className="absolute inset-0 bg-primary-500/20 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-500 z-10"></div>
+                  <div className="relative border border-card-border overflow-hidden bg-background aspect-video flex items-center justify-center">
+                    {project.featuredImage ? (
+                      <img
+                        src={project.featuredImage}
+                        alt={project.title}
+                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+                      />
+                    ) : (
+                      <Code size={64} className="text-foreground/20" />
+                    )}
+                  </div>
+                </div>
+
+                {/* Project Info */}
+                <div className={`lg:col-span-5 ${index % 2 !== 0 ? 'lg:text-right lg:order-1' : ''}`}>
+                  <div className="font-mono-terminal text-primary-500 text-sm mb-2 uppercase tracking-widest">
+                    0{index + 1} // {project.category}
+                  </div>
+                  <h3 className="text-3xl font-bold text-foreground mb-4 uppercase">{project.title}</h3>
+
+                  <div className={`bg-background border border-card-border p-6 shadow-xl mb-6 relative z-20 ${index % 2 !== 0 ? 'lg:-mr-12' : 'lg:-ml-12'}`}>
+                    <p className="text-foreground/80 font-mono-terminal text-sm leading-relaxed">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  {/* Key Features as Engineering Metrics style */}
+                  <div className={`flex flex-wrap gap-4 mb-6 ${index % 2 !== 0 ? 'lg:justify-end' : ''}`}>
+                    {project.keyFeatures.slice(0, 3).map((feature, idx) => (
+                      <div key={idx} className="flex flex-col">
+                        <span className="text-accent font-bold text-lg leading-none">+</span>
+                        <span className="text-xs font-mono-terminal text-foreground/60 uppercase">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Tech Stack */}
+                  <div className={`flex flex-wrap gap-2 mb-8 ${index % 2 !== 0 ? 'lg:justify-end' : ''}`}>
+                    {project.techStack.map((tech, idx) => (
+                      <span key={idx} className="text-xs font-mono-terminal text-foreground/50 border border-card-border px-2 py-1">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Links */}
+                  <div className={`flex gap-4 ${index % 2 !== 0 ? 'lg:justify-end' : ''}`}>
                     {project.githubUrl && (
                       <a
                         href={project.githubUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="p-3 bg-foreground text-background rounded-full hover:scale-110 transition-transform shadow-lg"
-                        aria-label="View Source on GitHub"
+                        className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider hover:text-primary-500 transition-colors"
                       >
-                        <Github size={20} />
+                        <Github size={18} /> View Source
                       </a>
                     )}
                     {project.liveDemoUrl && (
@@ -91,42 +95,19 @@ const Projects = () => {
                         href={project.liveDemoUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="p-3 bg-primary-600 text-white rounded-full hover:scale-110 transition-transform shadow-lg"
-                        aria-label="View Live Demo"
+                        className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider hover:text-accent transition-colors"
                       >
-                        <ExternalLink size={20} />
+                        <ExternalLink size={18} /> Live Demo
                       </a>
                     )}
                   </div>
                 </div>
 
-                {/* Project Content */}
-                <div className="p-6 flex flex-col flex-grow">
-                  <div className="mb-4">
-                    <span className="text-xs font-semibold text-primary-500 tracking-wider uppercase mb-2 block">
-                      {project.category}
-                    </span>
-                    <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary-500 transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-foreground/70 text-sm line-clamp-3">
-                      {project.description}
-                    </p>
-                  </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
-                  {/* Tech Stack Tags */}
-                  <div className="mt-auto pt-4 border-t border-foreground/10 flex flex-wrap gap-2">
-                    {project.techStack.map((tech, idx) => (
-                      <span key={idx} className="text-xs font-medium px-2.5 py-1 rounded-md bg-foreground/5 text-foreground/80">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
       </div>
     </section>
   );

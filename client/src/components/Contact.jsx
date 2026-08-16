@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { personalInfo } from '../data/portfolioData';
-import { Send, Mail, MapPin, CheckCircle, XCircle } from 'lucide-react';
+import { Terminal, Send, CheckCircle, XCircle } from 'lucide-react';
+import { FaGithub as Github, FaLinkedin as Linkedin, FaTwitter as Twitter } from 'react-icons/fa';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [status, setStatus] = useState({ submitting: false, success: null, message: '' });
 
   const handleChange = (e) => {
@@ -25,88 +26,80 @@ const Contact = () => {
       const data = await response.json();
 
       if (response.ok) {
-        setStatus({ submitting: false, success: true, message: 'Message sent successfully!' });
-        setFormData({ name: '', email: '', message: '' });
+        setStatus({ submitting: false, success: true, message: 'Message sent successfully. Connection closed.' });
+        setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
-        setStatus({ submitting: false, success: false, message: data.error || 'Failed to send message.' });
+        setStatus({ submitting: false, success: false, message: data.error || 'Connection failed.' });
       }
     } catch (error) {
       console.error('Submission error:', error);
-      setStatus({ submitting: false, success: false, message: 'Network error. Please try again later.' });
+      setStatus({ submitting: false, success: false, message: 'Network error. Host unreachable.' });
     }
   };
 
   return (
-    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-primary-600/5 rounded-l-full blur-3xl -z-10 transform translate-x-1/3"></div>
+    <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 bg-background border-t border-card-border relative">
+      <div className="max-w-4xl mx-auto">
 
-      <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-          className="mb-16 text-center md:text-left"
+          viewport={{ once: true }}
+          className="mb-16 text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Get in <span className="text-primary-500">Touch</span></h2>
-          <div className="w-20 h-1 bg-primary-500 rounded-full mx-auto md:mx-0"></div>
-          <p className="mt-6 text-foreground/70 max-w-2xl text-lg">
-            Whether you have a question, a project opportunity, or just want to say hi, I'll try my best to get back to you!
+          <span className="text-accent font-mono-terminal text-sm mb-2 block">// ping_me.sh</span>
+          <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tight">Let's Build Something <span className="text-primary-500">Real</span></h2>
+          <p className="mt-4 font-mono-terminal text-foreground/60 text-sm max-w-xl mx-auto">
+            Whether you want to collaborate on a project, discuss tech, or just say hello — my inbox is always open.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Info */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+
+          {/* Social Links Terminal */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-col space-y-8 justify-center"
+            className="md:col-span-5 bg-card-bg border border-card-border p-6 font-mono-terminal text-sm"
           >
-            <div className="flex items-start space-x-6">
-              <div className="w-14 h-14 rounded-2xl bg-primary-500/10 flex items-center justify-center flex-shrink-0 text-primary-500">
-                <Mail size={28} />
-              </div>
+            <div className="flex items-center space-x-2 mb-6 border-b border-card-border pb-4">
+              <Terminal size={16} className="text-foreground/50" />
+              <span className="text-foreground/50">connections.log</span>
+            </div>
+
+            <div className="space-y-6">
               <div>
-                <h3 className="text-xl font-semibold mb-2">Email</h3>
-                <a href={personalInfo.socials.email} className="text-foreground/70 hover:text-primary-500 transition-colors text-lg">
+                <p className="text-accent mb-1">$ locate email</p>
+                <a href={personalInfo.socials.email} className="text-foreground hover:text-primary-500 transition-colors">
                   {personalInfo.socials.email.replace('mailto:', '')}
                 </a>
               </div>
-            </div>
 
-            <div className="flex items-start space-x-6">
-              <div className="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center flex-shrink-0 text-blue-500">
-                <MapPin size={28} />
-              </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2">Location</h3>
-                <p className="text-foreground/70 text-lg">
-                  New Delhi, India<br/>
-                  <span className="text-sm">Available for remote work worldwide.</span>
-                </p>
-              </div>
-            </div>
-
-            <div className="pt-8 border-t border-foreground/10">
-              <h3 className="text-lg font-medium mb-4">Connect with me</h3>
-              <div className="flex space-x-4">
-                {Object.entries(personalInfo.socials).map(([key, url]) => (
-                  key !== 'email' && (
-                    <a
-                      key={key}
-                      href={url}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="w-10 h-10 rounded-full bg-foreground/5 flex items-center justify-center hover:bg-primary-500 hover:text-white transition-all transform hover:-translate-y-1"
-                    >
-                      <span className="sr-only">{key}</span>
-                      <i className={`icon-${key} capitalize text-sm font-medium`}>{key[0]}</i>
+                <p className="text-accent mb-1">$ fetch socials</p>
+                <ul className="space-y-2 mt-2">
+                  <li>
+                    <a href={personalInfo.socials.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-blue-400 transition-colors">
+                      <Linkedin size={16} /> LinkedIn
                     </a>
-                  )
-                ))}
+                  </li>
+                  <li>
+                    <a href={personalInfo.socials.github} target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-white transition-colors">
+                      <Github size={16} /> GitHub
+                    </a>
+                  </li>
+                  <li>
+                    <a href={personalInfo.socials.x} target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-blue-300 transition-colors">
+                      <Twitter size={16} /> Twitter
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <p className="text-accent mb-1">$ get_location</p>
+                <p className="text-foreground/80">New Delhi, India</p>
               </div>
             </div>
           </motion.div>
@@ -116,14 +109,13 @@ const Contact = () => {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            className="md:col-span-7"
           >
-            <form onSubmit={handleSubmit} className="bg-background border border-foreground/10 rounded-3xl p-8 shadow-lg">
-              <h3 className="text-2xl font-bold mb-6">Send me a message</h3>
+            <form onSubmit={handleSubmit} className="font-mono-terminal space-y-4">
 
-              <div className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-foreground/80 mb-2">Name</label>
+              <div className="flex flex-col md:flex-row gap-4">
+                <div className="flex-1">
+                  <label htmlFor="name" className="block text-xs text-foreground/50 mb-1 uppercase">Name</label>
                   <input
                     type="text"
                     id="name"
@@ -131,13 +123,11 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl bg-foreground/5 border border-foreground/10 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-all"
-                    placeholder="John Doe"
+                    className="w-full bg-card-bg border border-card-border px-4 py-2 text-foreground focus:outline-none focus:border-primary-500 transition-colors"
                   />
                 </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-foreground/80 mb-2">Email</label>
+                <div className="flex-1">
+                  <label htmlFor="email" className="block text-xs text-foreground/50 mb-1 uppercase">Email</label>
                   <input
                     type="email"
                     id="email"
@@ -145,54 +135,56 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl bg-foreground/5 border border-foreground/10 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-all"
-                    placeholder="john@example.com"
+                    className="w-full bg-card-bg border border-card-border px-4 py-2 text-foreground focus:outline-none focus:border-primary-500 transition-colors"
                   />
                 </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-foreground/80 mb-2">Message</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows="4"
-                    className="w-full px-4 py-3 rounded-xl bg-foreground/5 border border-foreground/10 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-all resize-none"
-                    placeholder="How can I help you?"
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={status.submitting}
-                  className="w-full py-4 rounded-xl bg-primary-600 hover:bg-primary-500 text-white font-bold flex items-center justify-center space-x-2 transition-colors shadow-md disabled:opacity-70 disabled:cursor-not-allowed"
-                >
-                  {status.submitting ? (
-                    <span>Sending...</span>
-                  ) : (
-                    <>
-                      <span>Send Message</span>
-                      <Send size={18} />
-                    </>
-                  )}
-                </button>
-
-                {/* Status Message */}
-                {status.message && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className={`p-4 rounded-xl flex items-center space-x-3 ${status.success ? 'bg-green-500/10 text-green-600' : 'bg-red-500/10 text-red-600'}`}
-                  >
-                    {status.success ? <CheckCircle size={20} /> : <XCircle size={20} />}
-                    <span className="font-medium text-sm">{status.message}</span>
-                  </motion.div>
-                )}
               </div>
+
+              <div>
+                <label htmlFor="subject" className="block text-xs text-foreground/50 mb-1 uppercase">Subject</label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  className="w-full bg-card-bg border border-card-border px-4 py-2 text-foreground focus:outline-none focus:border-primary-500 transition-colors"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-xs text-foreground/50 mb-1 uppercase">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows="5"
+                  className="w-full bg-card-bg border border-card-border px-4 py-2 text-foreground focus:outline-none focus:border-primary-500 transition-colors resize-none"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                disabled={status.submitting}
+                className="w-full bg-foreground text-background font-bold uppercase tracking-widest py-3 hover:bg-primary-500 hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              >
+                {status.submitting ? 'Transmitting...' : (
+                  <><Send size={16} /> Send Message</>
+                )}
+              </button>
+
+              {/* Status Message */}
+              {status.message && (
+                <div className={`p-3 border text-xs flex items-center gap-2 ${status.success ? 'border-accent text-accent bg-accent/10' : 'border-red-500 text-red-500 bg-red-500/10'}`}>
+                  {status.success ? <CheckCircle size={14} /> : <XCircle size={14} />}
+                  {status.message}
+                </div>
+              )}
             </form>
           </motion.div>
+
         </div>
       </div>
     </section>
