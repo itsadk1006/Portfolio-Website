@@ -33,7 +33,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-24 pb-10 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-background">
+    <section id="home" className="min-h-screen flex items-center justify-center pt-24 pb-10 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-transparent">
       {/* Grid Background Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
 
@@ -56,10 +56,10 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="flex flex-col items-center mb-8"
         >
-          <h1 className="text-6xl sm:text-8xl md:text-9xl font-black tracking-tighter text-foreground leading-none mb-2 uppercase">
-            ADITYA<span className="text-primary-500">.</span>
+          <h1 className="text-6xl sm:text-8xl md:text-9xl font-black tracking-tighter text-foreground leading-none mb-2 uppercase text-glow-primary">
+            ADITYA<span className="text-primary-500 text-glow-accent">.</span>
           </h1>
-          <h2 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-foreground/80 leading-none uppercase">
+          <h2 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-foreground/80 leading-none uppercase text-glow-primary">
             KUMAR
           </h2>
         </motion.div>
@@ -69,14 +69,14 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="max-w-3xl mx-auto mb-10 h-24 md:h-20"
+          className="max-w-3xl mx-auto mb-10 h-24 md:h-20 glass-panel p-4 rounded-md shadow-lg"
         >
-          <p className="text-lg md:text-xl text-foreground/70 leading-relaxed font-mono-terminal">
-            <span className="text-primary-500">{"/>"}</span> {text}
+          <p className="text-lg md:text-xl text-foreground/90 leading-relaxed font-mono-terminal">
+            <span className="text-primary-500 font-bold">{"/>"}</span> {text}
             <motion.span
               animate={{ opacity: [0, 1, 0] }}
-              transition={{ repeat: Infinity, duration: 0.8 }}
-              className="inline-block w-2 h-5 bg-accent ml-1 align-middle"
+              transition={{ repeat: Infinity, duration: 0.5 }}
+              className="inline-block w-2.5 h-5 bg-accent ml-1 align-middle box-glow-accent"
             />
           </p>
         </motion.div>
