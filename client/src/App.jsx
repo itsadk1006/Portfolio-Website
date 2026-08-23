@@ -8,18 +8,11 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ParticleBackground from './components/ParticleBackground';
 import { ThemeProvider } from './context/ThemeContext';
-import { ParticlesProvider } from '@tsparticles/react';
-import { loadSlim } from '@tsparticles/slim';
-
-const particlesInit = async (engine) => {
-  await loadSlim(engine);
-};
 
 function App() {
   return (
     <ThemeProvider>
       <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary-500/30 selection:text-primary-600 dark:selection:text-primary-400 relative">
-        <ParticlesProvider init={particlesInit}>
         <ParticleBackground />
         <div className="relative z-10">
           <Navbar />
@@ -32,7 +25,6 @@ function App() {
           </main>
           <Footer />
         </div>
-        </ParticlesProvider>
       </div>
     </ThemeProvider>
   );
