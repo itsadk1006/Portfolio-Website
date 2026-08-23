@@ -5,7 +5,6 @@ import { ExternalLink, Code } from 'lucide-react';
 import { FaGithub as Github } from 'react-icons/fa';
 
 const Projects = () => {
-  const [filter, setFilter] = React.useState("All");
   return (
     <section id="projects" className="py-24 px-4 sm:px-6 lg:px-8 bg-card-bg border-t border-card-border">
       <div className="max-w-5xl mx-auto">
@@ -20,25 +19,8 @@ const Projects = () => {
           <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tight">Projects, All <span className="text-primary-500">Shipped</span></h2>
         </motion.div>
 
-
-          <div className="flex flex-wrap gap-4 mb-16 justify-center">
-          {['All', ...new Set(projects.map(p => p.category))].map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setFilter(cat)}
-              className={`font-mono-terminal text-sm px-4 py-2 border transition-colors ${
-                filter === cat
-                  ? 'border-primary-500 text-primary-500 bg-primary-500/10'
-                  : 'border-card-border text-foreground/50 hover:border-foreground/30 hover:text-foreground'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-
         <div className="space-y-24">
-          {(filter === "All" ? projects : projects.filter(p => p.category === filter)).map((project, index) => (
+          {projects.map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 30 }}

@@ -91,7 +91,7 @@ const AboutSkills = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="bg-background border border-card-border p-6 rounded-none hover:border-primary-500/80 hover:shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-all duration-300 hover:-translate-y-1 group"
+              className="bg-background border border-card-border p-6 rounded-none hover:border-primary-500/50 transition-colors group"
             >
               <div className="flex items-center space-x-3 mb-6">
                 {category.icon}
@@ -99,7 +99,7 @@ const AboutSkills = () => {
               </div>
               <div className="flex flex-wrap gap-2">
                 {category.items.map(skill => (
-                  <span key={skill} className="font-mono-terminal text-xs px-2 py-1 bg-card-bg border border-card-border text-foreground/70 group-hover:border-primary-500/80 hover:text-primary-400 hover:shadow-[0_0_8px_rgba(6,182,212,0.6)] transition-all duration-300">
+                  <span key={skill} className="font-mono-terminal text-xs px-2 py-1 bg-card-bg border border-card-border text-foreground/70 group-hover:border-primary-500/30 transition-colors">
                     {skill}
                   </span>
                 ))}

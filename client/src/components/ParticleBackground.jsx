@@ -1,15 +1,9 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import Particles from '@tsparticles/react';
-import { loadSlim } from '@tsparticles/slim';
 import { useTheme } from '../context/ThemeContext';
 
 const ParticleBackground = () => {
   const { theme } = useTheme();
-
-  const particlesInit = useCallback(async (engine) => {
-    // loadSlim is lighter than loadFull and has what we need
-    await loadSlim(engine);
-  }, []);
 
   const options = useMemo(() => {
     const isDark = theme === 'dark';
@@ -91,7 +85,6 @@ const ParticleBackground = () => {
     <div className="absolute inset-0 z-0" style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
       <Particles
         id="tsparticles"
-        init={particlesInit}
         options={options}
         className="w-full h-full"
       />
