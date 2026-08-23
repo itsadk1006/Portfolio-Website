@@ -46,12 +46,16 @@ const Projects = () => {
               viewport={{ once: true, margin: "-100px" }}
               className="group"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center" style={{ perspective: 1000 }}>
 
                 {/* Project Image (Alternating sides) */}
-                <div className={`lg:col-span-7 relative ${index % 2 !== 0 ? 'lg:order-2' : ''}`}>
-                  <div className="absolute inset-0 bg-primary-500/20 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-500 z-10"></div>
-                  <div className="relative border border-card-border overflow-hidden bg-background aspect-video flex items-center justify-center">
+                <motion.div
+                  whileHover={{ scale: 1.02, rotateX: 2, rotateY: index % 2 === 0 ? -2 : 2 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className={`lg:col-span-7 relative ${index % 2 !== 0 ? 'lg:order-2' : ''}`}
+                >
+                  <div className="absolute inset-0 bg-primary-500/30 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-500 z-10"></div>
+                  <div className="relative border border-card-border overflow-hidden bg-background aspect-video flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] group-hover:border-primary-500/50 transition-all duration-500">
                     {project.featuredImage ? (
                       <img
                         src={project.featuredImage}
@@ -62,20 +66,23 @@ const Projects = () => {
                       <Code size={64} className="text-foreground/20" />
                     )}
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Project Info */}
                 <div className={`lg:col-span-5 ${index % 2 !== 0 ? 'lg:text-right lg:order-1' : ''}`}>
-                  <div className="font-mono-terminal text-primary-500 text-sm mb-2 uppercase tracking-widest">
+                  <div className="font-mono-terminal text-primary-500 text-sm mb-2 uppercase tracking-widest text-glow-primary">
                     0{index + 1} // {project.category}
                   </div>
                   <h3 className="text-3xl font-bold text-foreground mb-4 uppercase">{project.title}</h3>
 
-                  <div className={`bg-background border border-card-border p-6 shadow-xl mb-6 relative z-20 ${index % 2 !== 0 ? 'lg:-mr-12' : 'lg:-ml-12'}`}>
-                    <p className="text-foreground/80 font-mono-terminal text-sm leading-relaxed">
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    className={`glass-panel p-6 shadow-xl mb-6 relative z-20 ${index % 2 !== 0 ? 'lg:-mr-12' : 'lg:-ml-12'} group-hover:border-primary-500/30 transition-colors duration-500`}
+                  >
+                    <p className="text-foreground/90 font-mono-terminal text-sm leading-relaxed">
                       {project.description}
                     </p>
-                  </div>
+                  </motion.div>
 
                   {/* Key Features as Engineering Metrics style */}
                   <div className={`flex flex-wrap gap-4 mb-6 ${index % 2 !== 0 ? 'lg:justify-end' : ''}`}>
