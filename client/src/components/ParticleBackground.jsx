@@ -1,9 +1,19 @@
-import React, { useMemo } from 'react';
-import Particles from '@tsparticles/react';
+import React, { useEffect, useMemo, useState } from 'react';
+import Particles, { initParticlesEngine } from '@tsparticles/react';
+import { loadSlim } from '@tsparticles/slim';
 import { useTheme } from '../context/ThemeContext';
 
 const ParticleBackground = () => {
   const { theme } = useTheme();
+  const [init, setInit] = useState(false);
+
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setInit(true);
+    });
+  }, []);
 
   const options = useMemo(() => {
     const isDark = theme === 'dark';
@@ -80,6 +90,10 @@ const ParticleBackground = () => {
       detectRetina: true,
     };
   }, [theme]);
+
+  if (!init) {
+    return null;
+  }
 
   return (
     <div className="absolute inset-0 z-0" style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
