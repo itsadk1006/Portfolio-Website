@@ -60,36 +60,39 @@ export const internships = [
 export const projects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    description: "A full-featured e-commerce platform with a user-friendly interface and secure payment gateway integration.",
-    keyFeatures: ["User authentication", "Product catalog", "Shopping cart", "Stripe payment"],
-    techStack: ["React", "Node.js", "MongoDB", "Stripe"],
-    liveDemoUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    featuredImage: "https://images.unsplash.com/photo-1557821552-1710515302a9?auto=format&fit=crop&q=80&w=800",
-    category: "Full Stack"
+    title: "NEXUSCART AI",
+    description: "A dual-sided Agentic Commerce Gateway bridging intent-driven shoppers and retail merchants via natural language processing and deterministic financial math. Features zero-trust Human-in-the-Loop (HITL) spend limits, margin-aware upselling, and autonomous cross-platform fallback for out-of-stock inventory.",
+    keyFeatures: ["INTENT PARSER", "QUICK-COMMERCE FALLBACK", "DYNAMIC GUARDRAILS", "MERCHANT DASHBOARD"],
+    techStack: ["LangGraph", "Groq (Llama 3.3)", "FastAPI", "Next.js", "MongoDB", "Razorpay API"],
+    liveDemoUrl: "",
+    liveDemoAction: "Demo Video Uploading Soon!",
+    githubUrl: "https://github.com/itsadk1006/NexusCartAI",
+    featuredImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800",
+    category: "FULL STACK AI"
   },
   {
     id: 2,
-    title: "Distributed File System",
-    description: "A custom distributed file system designed for high fault tolerance and data replication across multiple nodes.",
-    keyFeatures: ["Data replication", "Fault tolerance", "Concurrency control", "Gossip protocol"],
-    techStack: ["C++", "gRPC", "Linux", "Docker"],
-    liveDemoUrl: "",
-    githubUrl: "https://github.com",
-    featuredImage: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800",
-    category: "Systems/AI"
+    title: "UNIVERSITY ERP SYSTEM",
+    description: "A comprehensive Enterprise Resource Planning (ERP) desktop application designed to streamline university administration. It provides secure, role-based access for managing student records, course enrollments, faculty scheduling, and academic databases.",
+    keyFeatures: ["STUDENT MANAGEMENT", "COURSE ENROLLMENT", "FACULTY DASHBOARD", "SECURE DATABASE"],
+    techStack: ["Java", "Java Swing", "JDBC", "SQL"],
+    liveDemoUrl: "https://drive.google.com/file/d/1B96blJd2PoqeBr0cLIw8-nAqcSmLchhh/view?usp=drive_link",
+    githubUrl: "https://github.com/CosmicCoder1006/AP_GRP_PROJECT",
+    featuredImage: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=800",
+    category: "FULL STACK JAVA"
   },
   {
     id: 3,
-    title: "Task Management App",
-    description: "A Kanban-style task management application to boost productivity with drag-and-drop features.",
-    keyFeatures: ["Drag-and-drop", "Real-time updates", "Team collaboration", "Analytics dashboard"],
-    techStack: ["React", "TypeScript", "Tailwind CSS", "Firebase"],
-    liveDemoUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    featuredImage: "https://images.unsplash.com/photo-1611224885990-ab7363d1f2a9?auto=format&fit=crop&q=80&w=800",
-    category: "Full Stack"
+    title: "DIGIREPORT",
+    description: "An AI-assisted medical record platform designed to help doctors retrieve patient history, analyze previous treatments, and generate structured consultation reports through intelligent workflows.",
+    keyFeatures: ["MEDICAL HISTORY", "AI AGENTS", "REPORT GENERATION"],
+    techStack: ["React", "FastAPI", "PostgreSQL", "LangGraph", "OpenAI"],
+    liveDemoUrl: "",
+    liveDemoAction: "Project in Development Phase.",
+    githubUrl: "",
+    githubAction: "Project in Development Phase.",
+    featuredImage: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800",
+    category: "FULL STACK + AGENTIC AI"
   }
 ];
 
