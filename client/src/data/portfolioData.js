@@ -19,7 +19,8 @@ export const skills = {
   languages: ["JavaScript", "TypeScript", "Python", "C++", "Java", "SQL"],
   frameworks: ["React", "Node.js", "Express", "Next.js", "Tailwind CSS", "Framer Motion"],
   tools: ["Git", "Docker", "Postman", "Linux", "AWS", "MongoDB"],
-  coreCS: ["Operating Systems", "DBMS", "Computer Networks", "OOP", "Data Structures", "Algorithms"]
+  coreCS: ["Operating Systems", "DBMS", "Computer Networks", "OOP", "Data Structures", "Algorithms"],
+  agenticAI: ["LangGraph", "ReAct Agents", "Multi-Agent Systems", "NLP", "Tavily Integration"]
 };
 
 export const internships = [
