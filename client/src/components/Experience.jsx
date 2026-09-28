@@ -44,7 +44,10 @@ const Experience = () => {
                       <h4 className="font-bold text-lg text-foreground">{internship.role}</h4>
                       <span className="font-mono-terminal text-xs text-accent bg-accent/10 px-2 py-1">{internship.duration}</span>
                     </div>
-                    <div className="text-primary-500 font-mono-terminal text-sm mb-4">{internship.company} <span className="text-foreground/40">// {internship.location}</span></div>
+                    <div className="text-primary-500 font-mono-terminal text-sm mb-4">
+                      {internship.company}
+                      {internship.location && <span className="text-foreground/40"> // {internship.location}</span>}
+                    </div>
 
                     <ul className="space-y-2 text-sm text-foreground/70 mb-4 font-mono-terminal">
                       {internship.achievements.map((achievement, idx) => (
@@ -55,13 +58,15 @@ const Experience = () => {
                       ))}
                     </ul>
 
-                    <div className="flex flex-wrap gap-2 pt-4 border-t border-card-border">
-                      {internship.techStack.map((tech, idx) => (
-                        <span key={idx} className="text-xs font-mono-terminal text-foreground/50 uppercase tracking-wider">
-                          [{tech}]
-                        </span>
-                      ))}
-                    </div>
+                    {internship.techStack && internship.techStack.length > 0 && (
+                      <div className="flex flex-wrap gap-2 pt-4 border-t border-card-border">
+                        {internship.techStack.map((tech, idx) => (
+                          <span key={idx} className="text-xs font-mono-terminal text-foreground/50 uppercase tracking-wider">
+                            [{tech}]
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </motion.div>
               ))}
