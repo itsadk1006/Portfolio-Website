@@ -6,13 +6,13 @@ export const personalInfo = {
   bio: "I'm a passionate Software Engineer and Full-Stack Developer with a knack for building scalable web applications and exploring the depths of computer science. Always eager to learn new technologies and solve complex problems.",
   avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Aditya",
   socials: {
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
-    leetcode: "https://leetcode.com",
+    github: "https://github.com/itsadk1006",
+    linkedin: "https://www.linkedin.com/in/aditya-kumar-330730301/",
+    leetcode: "https://leetcode.com/u/itsadk1006/",
     x: "https://twitter.com",
-    email: "mailto:aditya@example.com"
+    email: "mailto:istadk1006@gamil.com"
   },
-  resumeLink: "/resume.pdf"
+  resumeLink: "client\src\data\Resume.pdf"
 };
 
 export const skills = {
@@ -92,7 +92,6 @@ export const projects = [
 ];
 
 export const achievements = [
-  "1st Runner Up at HackDelhi 2023.",
+  "Top 5 in Hack4Health 2025.",
   "Achieved Knight status (1850+ rating) on LeetCode.",
-  "Top 5% in the batch academically with a CGPA of 9.2."
 ];

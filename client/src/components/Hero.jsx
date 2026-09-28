@@ -117,7 +117,7 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
-          className="w-full max-w-4xl grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-card-border pt-10"
+          className="w-full max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 border-t border-card-border pt-10 text-center"
         >
           <div className="flex flex-col items-center">
             <span className="text-4xl font-bold text-foreground mb-1">5+</span>
@@ -127,10 +127,7 @@ const Hero = () => {
             <span className="text-4xl font-bold text-foreground mb-1">2+</span>
             <span className="text-sm text-foreground/50 uppercase tracking-widest font-mono-terminal">Internships</span>
           </div>
-          <div className="flex flex-col items-center">
-            <span className="text-4xl font-bold text-foreground mb-1">9.2</span>
-            <span className="text-sm text-foreground/50 uppercase tracking-widest font-mono-terminal">CGPA</span>
-          </div>
+          
           <div className="flex flex-col items-center">
             <span className="text-4xl font-bold text-foreground mb-1">20+</span>
             <span className="text-sm text-foreground/50 uppercase tracking-widest font-mono-terminal">Skills</span>
