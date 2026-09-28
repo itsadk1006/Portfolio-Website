@@ -52,6 +52,36 @@ export const internships = [
     techStack: ["React", "Tailwind CSS", "Firebase", "Redux"],
     logo: "https://via.placeholder.com/50",
     link: "#"
+  },
+  {
+    id: 3,
+    company: "Hostiggo",
+    role: "Web Developer Intern",
+    duration: "Aug - 28 to Dec - 28",
+    location: "",
+    achievements: [
+      "Improved website visibility by implementing SEO optimization techniques, including on-page SEO, metadata optimization, content optimization, and website performance improvements.",
+      "Enhanced the website's UI/UX by redesigning key components, improving responsiveness, navigation, and overall user experience.",
+      "Assisted in integrating payment gateway services by evaluating suitable payment providers and supporting the implementation of a secure and seamless payment workflow.",
+      "Collaborated with the development team to optimize frontend functionality, resolve UI issues, and improve overall website performance."
+    ],
+    techStack: [],
+    logo: "",
+    link: ""
+  },
+  {
+    id: 4,
+    company: "IIIT-Delhi (Conducted under faculty supervision)",
+    role: "Gaze Estimation for Smart Glasses",
+    duration: "Present",
+    location: "",
+    achievements: [
+      "Built a two-stage gaze estimation pipeline: object detection for pupil/iris localization, followed by regression models (Linear, MLP, CNN) for gaze mapping.",
+      "Optimized model to 2.35 MiB weights / 63.28 KiB activation size, benchmarked at 7.407ms inference on reference hardware; deployed on Raspberry Pi 4 for real-time inference."
+    ],
+    techStack: [],
+    logo: "",
+    link: ""
   }
 ];
 
