@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { projects } from '../data/portfolioData';
 import { ExternalLink, Code } from 'lucide-react';
 import { FaGithub as Github } from 'react-icons/fa';
+import toast from 'react-hot-toast';
 
 const Projects = () => {
   return (
@@ -87,22 +88,24 @@ const Projects = () => {
 
                   {/* Links */}
                   <div className={`flex gap-4 ${index % 2 !== 0 ? 'lg:justify-end' : ''}`}>
-                    {project.githubUrl && (
+                    {(project.githubUrl || project.githubAction) && (
                       <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider hover:text-primary-500 transition-colors"
+                        href={project.githubUrl || "#"}
+                        onClick={project.githubAction ? (e) => { e.preventDefault(); toast(project.githubAction, { icon: "🚧" }); } : undefined}
+                        target={project.githubUrl ? "_blank" : undefined}
+                        rel={project.githubUrl ? "noreferrer" : undefined}
+                        className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider hover:text-primary-500 transition-colors cursor-pointer"
                       >
                         <Github size={18} /> View Source
                       </a>
                     )}
-                    {project.liveDemoUrl && (
+                    {(project.liveDemoUrl || project.liveDemoAction) && (
                       <a
-                        href={project.liveDemoUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider hover:text-accent transition-colors"
+                        href={project.liveDemoUrl || "#"}
+                        onClick={project.liveDemoAction ? (e) => { e.preventDefault(); toast(project.liveDemoAction, { icon: "🚀" }); } : undefined}
+                        target={project.liveDemoUrl ? "_blank" : undefined}
+                        rel={project.liveDemoUrl ? "noreferrer" : undefined}
+                        className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider hover:text-accent transition-colors cursor-pointer"
                       >
                         <ExternalLink size={18} /> Live Demo
                       </a>
