@@ -10,9 +10,9 @@ export const personalInfo = {
     linkedin: "https://www.linkedin.com/in/aditya-kumar-330730301/",
     leetcode: "https://leetcode.com/u/itsadk1006/",
     x: "https://twitter.com",
-    email: "mailto:istadk1006@gamil.com"
+    email: "mailto:istadk1006@gmail.com"
   },
-  resumeLink: "client\src\data\Resume.pdf"
+  resumeLink: "https://drive.google.com/file/d/1kOPkc02RyyZQeCH1NffOX8f6k4Apau3a/view?usp=sharing"
 };
 
 export const skills = {
