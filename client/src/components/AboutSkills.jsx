@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { personalInfo, skills } from '../data/portfolioData';
-import { Terminal, Code2, Database, Layout, Server, Settings } from 'lucide-react';
+import { Terminal, Code2, Database, Layout, Server, Settings, Bot } from 'lucide-react';
 
 const AboutSkills = () => {
   return (
@@ -78,12 +78,13 @@ const AboutSkills = () => {
         </motion.div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
           {[
             { title: "Languages", icon: <Code2 className="text-primary-500" />, items: skills.languages },
             { title: "Frameworks", icon: <Layout className="text-blue-500" />, items: skills.frameworks },
             { title: "Core CS", icon: <Server className="text-accent" />, items: skills.coreCS },
             { title: "Tools", icon: <Settings className="text-orange-500" />, items: skills.tools },
+            { title: "Agentic AI & NLP", icon: <Bot className="text-purple-500" />, items: skills.agenticAI },
           ].map((category, idx) => (
             <motion.div
               key={idx}
@@ -91,7 +92,7 @@ const AboutSkills = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="bg-background border border-card-border p-6 rounded-none hover:border-primary-500/50 transition-colors group"
+              className={`bg-background border border-card-border p-6 rounded-none hover:border-primary-500/50 transition-colors group lg:col-span-2 ${idx === 3 ? 'lg:col-start-2' : ''}`}
             >
               <div className="flex items-center space-x-3 mb-6">
                 {category.icon}
