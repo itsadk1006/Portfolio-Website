@@ -24,38 +24,9 @@ export const skills = {
 };
 
 export const internships = [
+  
   {
     id: 1,
-    company: "TechNova Solutions",
-    role: "Software Engineering Intern",
-    duration: "May 2023 - July 2023",
-    location: "Remote",
-    achievements: [
-      "Developed and maintained RESTful APIs using Node.js and Express.",
-      "Optimized database queries, reducing response times by 20%.",
-      "Collaborated with the frontend team to integrate APIs seamlessly."
-    ],
-    techStack: ["Node.js", "Express", "MongoDB", "Postman"],
-    logo: "https://via.placeholder.com/50",
-    link: "#"
-  },
-  {
-    id: 2,
-    company: "InnovateX Labs",
-    role: "Full-Stack Developer Intern",
-    duration: "Dec 2022 - Feb 2023",
-    location: "New Delhi, India",
-    achievements: [
-      "Built a scalable dashboard application using React and Tailwind CSS.",
-      "Implemented secure user authentication utilizing JWT.",
-      "Participated in daily stand-ups and agile sprint planning."
-    ],
-    techStack: ["React", "Tailwind CSS", "Firebase", "Redux"],
-    logo: "https://via.placeholder.com/50",
-    link: "#"
-  },
-  {
-    id: 3,
     company: "Hostiggo",
     role: "Web Developer Intern",
     duration: "Aug - 28 to Dec - 28",
@@ -71,9 +42,9 @@ export const internships = [
     link: ""
   },
   {
-    id: 4,
-    company: "IIIT-Delhi (Conducted under faculty supervision)",
-    role: "Gaze Estimation for Smart Glasses",
+    id: 2,
+    company: "Gaze Estimation for Smart Glasses",
+    role:"",
     duration: "Present",
     location: "",
     achievements: [
